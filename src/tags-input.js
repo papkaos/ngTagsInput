@@ -112,6 +112,9 @@ export default function TagsInputDirective($timeout, $document, $window, $q, tag
         self.items.splice(index, 1);
         self.clearSelection();
         events.trigger('tag-removed', { $tag: tag });
+        //to open suggestions if input was already focused
+        events.trigger('input-blur');
+        events.trigger('input-focus');
         return tag;
       });
     };
